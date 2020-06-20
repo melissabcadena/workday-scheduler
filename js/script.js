@@ -16,8 +16,9 @@ var renderTasks = function () {
                 // then add the text from the array into the task-text text area on the page
                 $(this).find(".task-text").val(savedTasks[i].text)
             }
-        }
+        }  
     )}
+    auditTasks();
 };
 
 // save task on save button click
@@ -48,5 +49,21 @@ $(".saveBtn").on("click", function() {
         }
     });
 })
+
+var auditTasks = function () {
+    // get current hour
+    var currentHour = moment().format("h A");
+    // go through each of the rows, find the hour
+    $(".container").children().each(function() {
+
+        if ($(this).find(".get-hour").text().trim() === currentHour) {
+            //if the hour of the row is equal to the current hour, give it the class "present"
+            console.log($(this).find(".text-area"));
+            $(this).find(".task-text").removeClass("bg-light");
+            $(this).find(".task-text").addClass("present");
+        } 
+     
+    })
+}
 
 renderTasks();
