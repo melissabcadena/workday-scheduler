@@ -20,33 +20,31 @@ $("#currentDay").text(currentDate);
 
 // save task on save button click
 $(".saveBtn").on("click", function() {
-    // creating temp array
-    tempTasksArr = [];
+    // creating saved tasks array
+    var savedTasksArr = [];
 
     // when clicking on save btn, it saves all tasks to array
     $(".container").children().each(function() {
         // saves values in array
-        tempTasksArr.push({
+        savedTasksArr.push({
           text: $(this)
             .find(".task-text")
-            .text()
+            .val()
             .trim(),
-          date: $(this)
+          hour: $(this)
             .find(".get-hour")
             .text()
             .trim()
         })
-
-        console.log(tempTasksArr);
-    });
-
-    // // checks if array has already been saved for current date
-
-    // if (!(localStorage.getItem(currentDate))) {
-    //     currentDate = [];
-    //     currentDate.push(tempTasksArray);
-    // }
-
+    // checks if array has already been saved for current date
+    if (!(localStorage.getItem(currentDate))) {
+        localStorage.setItem(currentDate, JSON.stringify(savedTasksArr));
+    }
+    else {
+        localStorage.removeItem(currentDate);
+        localStorage.setItem(currentDate, JSON.stringify(savedTasksArr));
+    }
+});
 
 
     // // save task to local storage
