@@ -12,6 +12,6 @@ A website that was created to assist user in managing their daily tasks. Upon pa
 * Moment.js
 
 ## Screenshot of Application
-<img scr=./assets/images/WorkDay-Scheduler-ScreenShot.png>
+<img src= "./images/WorkDay-Scheduler-ScreenShot.png">
 
 ## Deployed Website
