@@ -52,18 +52,37 @@ $(".saveBtn").on("click", function() {
 
 var auditTasks = function () {
     // get current hour
-    var currentHour = moment().format("h A");
-    // go through each of the rows, find the hour
+    var currentHour = moment().hours()
+    // go through each of the time blocks
     $(".container").children().each(function() {
+        // grabs hour from page
+        var pageHour = $(this).find(".get-hour").text().trim();
 
-        if ($(this).find(".get-hour").text().trim() === currentHour) {
-            //if the hour of the row is equal to the current hour, give it the class "present"
-            console.log($(this).find(".text-area"));
-            $(this).find(".task-text").removeClass("bg-light");
+        // grabs only the number
+        var hour = parseInt(pageHour.split(" ")[0]);
+
+        if (hour < 6) {
+            hour = hour+12;
+        }
+
+        //remove any current classes
+        $(this).find(".task-text").removeClass("present");
+        $(this).find(".task-text").removeClass("future");
+        $(this).find(".task-text").removeClass("past");
+
+
+        if (hour === currentHour) {
             $(this).find(".task-text").addClass("present");
         } 
-     
+        
+        else if (hour > currentHour) {
+            $(this).find(".task-text").addClass("future");
+        }
+        else {
+            $(this).find(".task-text").addClass("past");
+        }
     })
-}
+};
+
 
 renderTasks();
