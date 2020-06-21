@@ -15,3 +15,7 @@ A website that was created to assist user in managing their daily tasks. Upon pa
 <img src= "./images/WorkDay-Scheduler-ScreenShot.png">
 
 ## Deployed Website
+https://melissabcadena.github.io/workday-scheduler/
+
+## GitHub Link
+https://github.com/melissabcadena/workday-scheduler.git
