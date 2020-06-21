@@ -84,5 +84,6 @@ var auditTasks = function () {
     })
 };
 
+setInterval(auditTasks, ((1000*60))*60);
 
 renderTasks();
